@@ -3,22 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HealthBot - Neon Edition</title>
+  <title>HealthBot - Neo HyperTech</title>
   <style>
-    body {
+    /* Basic Reset */
+    * {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       background-color: #000;
       color: #00f0ff;
+      font-family: 'Segoe UI', sans-serif;
       font-weight: bold;
+      overflow-x: hidden;
     }
 
     header {
-      border-bottom: 3px solid #00f0ff;
       padding: 30px 20px;
       text-align: center;
-      background: #000;
-      box-shadow: 0 0 15px #00f0ff;
+      position: relative;
+    }
+
+    .typewriter {
+      font-size: 28px;
+      color: #00f0ff;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 4px solid #00f0ff;
+      width: 0;
+      animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
     }
 
     nav {
@@ -44,17 +68,24 @@
     }
 
     section {
-      border: 2px solid #00f0ff;
       margin: 40px 20px;
       padding: 30px;
+      border: 3px solid #00f0ff;
       border-radius: 10px;
       box-shadow: 0 0 20px #00f0ff;
+      animation: glow 2s ease-in-out infinite alternate;
     }
 
-    h1, h2 {
+    @keyframes glow {
+      from { box-shadow: 0 0 10px #00f0ff; }
+      to { box-shadow: 0 0 25px #00f0ff, 0 0 40px #00f0ff; }
+    }
+
+    h2 {
       color: #00f0ff;
-      font-size: 28px;
       text-shadow: 0 0 10px #00f0ff;
+      font-size: 24px;
+      margin-bottom: 10px;
     }
 
     p {
@@ -69,12 +100,25 @@
       border-top: 2px solid #00f0ff;
       box-shadow: 0 0 15px #00f0ff;
     }
+
+    /* Particle background container */
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
   </style>
 </head>
 <body>
 
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+
   <header>
-    <h1>HealthBot</h1>
+    <h1 class="typewriter">Welcome to HealthBot</h1>
     <p>Your AI-Powered Wellness Chat Assistant</p>
   </header>
 
@@ -85,7 +129,7 @@
   </nav>
 
   <section id="home">
-    <h2>Welcome to HealthBot</h2>
+    <h2>Home</h2>
     <p>Ask anything about your health, fitness, diet, or mental wellness and get instant AI answers. No appointments, no stress — just you and your health assistant, anytime you need it.</p>
   </section>
 
@@ -95,7 +139,7 @@
   </section>
 
   <section id="contact">
-    <h2>Contact Us</h2>
+    <h2>Contact</h2>
     <p>Need to reach out? Use the chatbot below or send us a message through the embedded form.</p>
 
     <!-- Jotform Chatbot Embed -->
@@ -107,6 +151,45 @@
   <footer>
     &copy; 2025 HealthBot. All rights reserved.
   </footer>
+
+  <!-- Load Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80 },
+        color: { value: "#00f0ff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 3 },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#00f0ff",
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: "none",
+          out_mode: "bounce"
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 100 },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
 
 </body>
 </html>
